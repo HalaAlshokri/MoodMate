@@ -2,8 +2,9 @@ import { View, Text } from 'react-native'
 import React from 'react'
 
 const Calendar = () => {
+
     return (
-        <View>
+        <View style={{ justifyContent: 'center', flex: 1 }}>
             <Text>Calendar</Text>
         </View>
     )

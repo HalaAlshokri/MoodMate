@@ -1,14 +1,73 @@
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-import React from "react";
-import { View } from "react-native";
+import { useState } from "react";
+import { Image, StyleSheet, Dimensions, Pressable, View, Modal, Text } from "react-native";
+import Animated, { SharedValue, Extrapolation, RotateInDownLeft, interpolate, useAnimatedStyle } from "react-native-reanimated";
+import Carousel from "react-native-reanimated-carousel";
+import * as React from 'react';
+
+import { emojis } from "../utils/items";
+//import { withAnchorPoint } from "../utils/anchor-point";
+import { CircularCarousel } from "@/components/Circular-Carousel/CircularCarousel";
+
+/*const emojis = [require("../../assets/Clown.png"),
+require("../../assets/Cool.png"),
+require("../../assets/Crying.png"),
+require("../../assets/Happy.png"), ,
+require("../../assets/In_Love.png"),
+require("../../assets/Rich.png"),
+require("../../assets/Sad.png"),
+require("../../assets/Satisfied.png"),
+require("../../assets/Shook.png"), ,
+require("../../assets/Silly.png")];*/
 
 
 export default () => {
+
+  /*//page width
+  const width = Dimensions.get('window').width
+  //page height
+  const height = Dimensions.get('window').height*/
+  const [isAutoPlay, setIsAutoPlay] = React.useState(false);
+
+
+  const [pagingEnabled, setPagingEnabled] = useState(true)
+  const width = Dimensions.get('window').width
+  const height = Dimensions.get('window').height
+
+
+
+
+  // For add button page state
+  const [openModal, setOpenModal] = React.useState(false)
+
+  // For add button page
+  function renderModal() {
+    return (
+      <Modal visible={openModal} animationType="slide" transparent={true}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#4C9FC1', width: '100%', height: '100%', }}>
+          <View style={{ flex: 1, maxHeight: '81.5%', justifyContent: 'center', alignItems: 'center', }}>
+
+            <CircularCarousel data={emojis} />
+
+          </View>
+          <Pressable onPress={() => setOpenModal(false)}>
+            <Ionicons name="add" color="white" size={40} style={{ alignContent: 'center', verticalAlign: 'bottom', transform: [{ rotate: '45deg' }], }} />
+          </Pressable>
+        </View>
+      </Modal>
+    )
+  }
+
+  const [rotation, setRotation] = useState(0)
+
+  const AnimatedTouchable = Animated.createAnimatedComponent(Pressable);
+
+
   return (
     <Tabs screenOptions={{
-      headerShown: true,
+      headerShown: false,
       tabBarShowLabel: false,
       tabBarStyle: {
         position: "absolute",
@@ -39,6 +98,7 @@ export default () => {
         ),
       }} />
 
+
       <Tabs.Screen name="add" options={{
         tabBarIcon: ({ focused }) => (
           <View style={{
@@ -50,7 +110,10 @@ export default () => {
             backgroundColor: "#4C9FC1",
             marginBottom: 30,
           }} >
-            <Ionicons name="add" color="white" size={30} />
+            <AnimatedTouchable onPress={() => setOpenModal(true)}>
+              <Ionicons name="add" color="white" size={40} />
+            </AnimatedTouchable>
+            {renderModal()}
           </View>
         )
       }} />
@@ -76,3 +139,15 @@ export default () => {
     </Tabs >
   );
 };
+
+const styles = StyleSheet.create({
+  CarouselItem: {
+    flex: 1,
+    justifyContent: 'center',
+    overflow: 'hidden'
+  },
+  img: {
+    width: '100%',
+    height: '100%'
+  }
+});
