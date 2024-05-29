@@ -1,37 +1,47 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native"
+import { Stack, useNavigation } from "expo-router"
+import { StyleSheet, SafeAreaView, View } from 'react-native';
+
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { StatusBar } from "expo-status-bar";
+import { useEffect } from "react";
+import registerNNPushToken from 'native-notify';
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+
+
+
+
+const StackLayout = () => {
+  registerNNPushToken(21569, 'UGTsKy65XgPiRSxIL67PGv');
+
   const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+
+  const navigation = useNavigation();
 
   useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
+    navigation.setOptions({ headerShown: false });
+  }, [navigation]);
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
+    <View style={{ justifyContent: 'center' }}>
+      {/*<StatusBar backgroundColor={'transparent'} translucent />*/}
+      <Stack screenOptions={{
+        headerStyle: {
+          backgroundColor: 'transparent',
+        },
+
+      }}>
+        <Stack.Screen name="(tabs)" options={{
+          headerShown: false, headerShadowVisible: false, headerStyle: {
+            backgroundColor: 'red',
+          },
+          headerTintColor: 'green',
+
+        }} />
       </Stack>
-    </ThemeProvider>
-  );
+    </View>
+  )
 }
+
