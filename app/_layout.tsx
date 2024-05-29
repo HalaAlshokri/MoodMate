@@ -6,6 +6,7 @@ import { StyleSheet, SafeAreaView, View } from 'react-native';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
+import registerNNPushToken from 'native-notify';
 
 
 
@@ -13,6 +14,8 @@ import { useEffect } from "react";
 
 
 const StackLayout = () => {
+  registerNNPushToken(21569, 'UGTsKy65XgPiRSxIL67PGv');
+
   const colorScheme = useColorScheme();
 
   const navigation = useNavigation();

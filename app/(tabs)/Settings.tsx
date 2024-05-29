@@ -1,12 +1,13 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const settings = () => {
+const Settings = () => {
+
     return (
-        <View>
-            <Text>settings</Text>
+        <View style={{ justifyContent: 'center', flex: 1 }}>
+            <Text>Settings</Text>
         </View>
     )
 }
 
-export default settings
+export default Settings

@@ -1,22 +1,13 @@
-import { StyleSheet, View, Text, SafeAreaView } from 'react-native'
+import { View, Text } from 'react-native'
 import React from 'react'
-import { StatusBar } from 'expo-status-bar'
 
 const Analytics = () => {
 
     return (
-        <SafeAreaView style={styles.container}>
-
+        <View style={{ justifyContent: 'center', flex: 1 }}>
             <Text>Analytics</Text>
-        </SafeAreaView>
+        </View>
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'blue',
-
-    }
-});
 export default Analytics

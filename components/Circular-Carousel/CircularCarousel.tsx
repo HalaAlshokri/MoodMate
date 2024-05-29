@@ -14,12 +14,14 @@ const CircularCarousel: React.FC<CircularCarouselProps> = ({ data, }) => {
 
     return (
         <FlatList style={{
-            flex: 1, backgroundColor: 'transparent', alignContent: 'center', position: 'absolute'
+            flex: 1, backgroundColor: 'transparent', alignContent: 'center'
         }}
             data={data}
             horizontal
             keyExtractor={(_, index) => index.toString()}
             scrollEventThrottle={16}
+            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
             onScroll={(Event) => { contentOffset.value = Event.nativeEvent.contentOffset.x }}
             renderItem={({ item, index }) => {
                 return <CircularCarouselListItem contentOffset={contentOffset} imageSrc={item} index={index} />

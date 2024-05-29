@@ -10,7 +10,7 @@ type CircularCarouselListItemProps = {
 
 const { width: windowWidth } = Dimensions.get('window')
 
-const ListItemWidth = windowWidth / 1.8
+const ListItemWidth = windowWidth / 1.5
 
 const CircularCarouselListItem: React.FC<CircularCarouselListItemProps> = ({ imageSrc, index, contentOffset }) => {
     /**/const rStyle = useAnimatedStyle(() => {

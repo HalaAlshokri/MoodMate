@@ -10,6 +10,7 @@ import * as React from 'react';
 import { emojis } from "../utils/items";
 //import { withAnchorPoint } from "../utils/anchor-point";
 import { CircularCarousel } from "@/components/Circular-Carousel/CircularCarousel";
+import registerNNPushToken from "native-notify";
 
 /*const emojis = [require("../../assets/Clown.png"),
 require("../../assets/Cool.png"),
@@ -24,6 +25,8 @@ require("../../assets/Silly.png")];*/
 
 
 export default () => {
+  registerNNPushToken(21569, 'UGTsKy65XgPiRSxIL67PGv'); //Timed Notification
+
 
   /*//page width
   const width = Dimensions.get('window').width
@@ -45,10 +48,10 @@ export default () => {
   // For add button page
   function renderModal() {
     return (
-      <Modal visible={openModal} animationType="slide" transparent={true}>
+      <Modal visible={openModal} animationType="slide" transparent={true} >
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#4C9FC1', width: '100%', height: '100%', }}>
           <View style={{ flex: 1, maxHeight: '81.5%', justifyContent: 'center', alignItems: 'center', }}>
-
+            <Text style={{ fontWeight: 'bold', color: 'white', fontSize: 30 }}> How Are you today? </Text>
             <CircularCarousel data={emojis} />
 
           </View>
@@ -74,22 +77,30 @@ export default () => {
         bottom: 0,
         left: 16,
         right: 16,
-        backgroundColor: "black",
+        backgroundColor: "white",
         borderRadius: 16,
         alignItems: "center",
         justifyContent: "center",
         //marginBottom: 0,
         paddingBottom: 0,
         height: 60,
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+        shadowOffset: {
+          width: 2, height: 2
+        }
       },
-
-    }}>
+      tabBarActiveTintColor: "#464646",
+      tabBarInactiveTintColor: "#B4B4B4",
+    }}
+    >
 
       <Tabs.Screen name="Home" options={{
         title: 'Home',
         tabBarIcon: ({ color, focused }) => (
           <TabBarIcon name={focused ? 'home-sharp' : 'home-outline'} color={color} />
         ),
+
       }} />
       <Tabs.Screen name="Calendar" options={{
         title: 'Calendar',
