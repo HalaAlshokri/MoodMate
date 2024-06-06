@@ -22,8 +22,9 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff",
         "translucent": true,
-        "googleServicesFile": "./google-services.json",
-      }
+        "googleServicesFile": "./google-services.json"
+      },
+      "package": "com.halaalshokri.moodmate"
     },
     "web": {
       "bundler": "metro",
@@ -33,7 +34,7 @@
     "plugins": [
       "expo-router",
       "@react-native-firebase/app",
-      "@react-native-firebase/auth",
+      "@react-native-firebase/auth"
     ],
     "experiments": {
       "typedRoutes": true

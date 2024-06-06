@@ -14,15 +14,15 @@ import registerNNPushToken from 'native-notify';
 
 
 const StackLayout = () => {
-  registerNNPushToken(21569, 'UGTsKy65XgPiRSxIL67PGv');
+  //registerNNPushToken(21569, 'UGTsKy65XgPiRSxIL67PGv');
 
   const colorScheme = useColorScheme();
 
-  const navigation = useNavigation();
+  /*const navigation = useNavigation();
 
   useEffect(() => {
     navigation.setOptions({ headerShown: false });
-  }, [navigation]);
+  }, [navigation]);*/
 
   return (
     <View style={{ justifyContent: 'center' }}>
