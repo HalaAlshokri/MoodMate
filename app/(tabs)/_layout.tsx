@@ -102,8 +102,8 @@ export default () => {
         ),
 
       }} />
-      <Tabs.Screen name="Calendar" options={{
-        title: 'Calendar',
+      <Tabs.Screen name="CalendarP" options={{
+        title: 'CalendarP',
         tabBarIcon: ({ color, focused }) => (
           <TabBarIcon name={focused ? 'calendar-sharp' : 'calendar-outline'} color={color} />
         ),

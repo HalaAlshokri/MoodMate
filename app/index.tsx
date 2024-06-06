@@ -1,8 +1,15 @@
-import { Redirect } from "expo-router";
+import { useRootNavigationState, Redirect } from 'expo-router';
 
-const StartPage = () => {
-  return <Redirect href="/Home" />
-};
+
+export default function InitalRouting() {
+  const rootNavigationState = useRootNavigationState();
+
+
+  if (!rootNavigationState?.key) return null;
+
+
+  return <Redirect href={'/(tabs)/Home'} />
+}
 
 /*export default StartPage; 
 import "react-native-gesture-handler"
